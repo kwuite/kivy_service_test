@@ -10,12 +10,15 @@ ADB:="adb -s localhost:5555"
 APP_NAME:="com.heattheatr.kivy_service_test"
 APK_NAME:="kivy_service_test-" + APP_VERSION + "-x86_64-debug.apk"
 
+# Install Python environment
 install:
     poetry install
 
+# Connect with localhost:5555
 adb-connect:
     adb connect localhost:5555
 
+# List connected devices
 adb-devices:
     adb devices
 
@@ -73,12 +76,3 @@ clean:
     rm -rf .buildozer/android/app
     rm -rf .buildozer/android/platform/build-x86_64/dists
     rm -rf ./bin
-
-buildozer-log:
-    {{POETRY_RUN}} buildozer android logcat
-
-buildozer-init:
-    {{POETRY_RUN}} buildozer init
-
-buildozer-requirements:
-	sudo apt install -y git zip unzip openjdk-8-jdk python3-pip autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo5 cmake libffi-dev libssl-dev
