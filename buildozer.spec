@@ -18,7 +18,7 @@ source.include_exts = py,png,jpg,jpeg,ttf,kv,mp3, #,so,2,6,2,1,a
 source.include_patterns = img/*, font/*, ui/*, music/*
 
 # (list) Application version
-version = 0.0.28
+version = 0.0.29
 
 # NAME_SERVICE:PATH_TO_PY
 # (list) List of service to declare
@@ -26,9 +26,7 @@ services = Test:./service.py:foreground
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3, \
-               kivy, \
-               jnius
+requirements = python3, kivy, pyjnius
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
@@ -51,7 +49,8 @@ android.api = 31
 android.minapi = 21
 
 # (str) Android NDK version to use
-android.ndk = 23b
+# Note: it complained about 23b
+android.ndk = 25b
 
 # (bool) If True, then skip trying to update the Android sdk
 # This can be useful to avoid excess Internet downloads or save time
@@ -65,7 +64,8 @@ android.skip_update = False
 android.accept_sdk_license = True
 
 # (str) The Android arch to build for, choices: armeabi-v7a, arm64-v8a, x86, x86_64
-android.archs = arm64-v8a
+android.archs = xarm64-v8a
+# android.archs = x86_64 # Used for docker-android
 
 # (list) Android additionnal libraries to copy into libs/armeabi
 android.add_src = %(source.dir)s/java_src/*

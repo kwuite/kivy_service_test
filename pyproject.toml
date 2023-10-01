@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "kivy-service-test"
+version = "0.1.0"
+description = ""
+authors = ["djvu <djvu@inbox.ru>","K.R. Wuite <gitkelvin.id>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+kivy = "^2.2.1"
+buildozer = {git = "https://github.com/dvjdjvu/buildozer.git"}
+python-for-android = {git = "https://github.com/dvjdjvu/python-for-android.git"}
+cython = "0.29.24"
+pyjnius = "^1.5.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
