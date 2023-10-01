@@ -66,7 +66,7 @@ build-deploy:
     {{POETRY_RUN}} buildozer -v android debug deploy
 
 # stop > build > deploy > start > tail logs
-run: adb-stop build-deploy adb-start adb-log-apk 
+run: adb-stop build-deploy adb-start adb-log-app 
 
 # Cleans build artifacts
 clean:

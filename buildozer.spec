@@ -40,7 +40,7 @@ orientation = portrait
 fullscreen = 1
 
 # (list) Permissions
-android.permissions = WRITE_EXTERNAL_STORAGE
+android.permissions = WRITE_EXTERNAL_STORAGE,FOREGROUND_SERVICE
 
 # (int) Target Android API, should be as high as possible.
 android.api = 31
