@@ -41,7 +41,7 @@ adb-log-python:
 
 # Show APP logs with logcat
 adb-log-app:
-    {{ADB}} logcat | grep -e 'kivy_service_test'
+    {{ADB}} logcat | grep -e 'ServiceTest'
 
 # Show the Android APK logs
 adb-log-apk:

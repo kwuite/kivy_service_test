@@ -7,6 +7,7 @@ from kivy.app import App
 from kivy.uix.button import Button
 
 from kivy.utils import platform
+from kivy.logger import Logger
 
 import jnius
 from jnius import cast
@@ -36,6 +37,7 @@ class ButtonApp(App):
         return btn
 
     def on_start(self):
+        Logger.info(f'ServiceTest: main.on_start')
         self.service = None
 
         # При старте приложения запускаем сервис.
@@ -44,6 +46,7 @@ class ButtonApp(App):
     # callback function tells when button pressed
     def callback(self, event):
         if platform == 'android':
+            Logger.info(f'ServiceTest: main.callback')
             CurrentActivity.finishAndRemoveTask()
 
             System.exit(0)
@@ -53,6 +56,7 @@ class ButtonApp(App):
     # функция запуска сервиса
     def service_start(self):
         if platform == 'android':
+            Logger.info(f'ServiceTest: main.service_start')
             self.service = autoclass(CurrentActivity.getPackageName() + ".ServiceTest")
             self.service.start(CurrentActivity, "")
 
@@ -60,6 +64,7 @@ class ButtonApp(App):
     def service_stop(self):
         if self.service :
             if platform == 'android':
+                Logger.info(f'ServiceTest: main.service_stop')
                 self.service.stop(CurrentActivity)
 
 ##

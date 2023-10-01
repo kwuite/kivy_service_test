@@ -22,7 +22,7 @@ version = 0.0.29
 
 # NAME_SERVICE:PATH_TO_PY
 # (list) List of service to declare
-services = Test:./service.py:foreground
+services = Test:./service.py:foreground:sticky
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
@@ -64,8 +64,9 @@ android.skip_update = False
 android.accept_sdk_license = True
 
 # (str) The Android arch to build for, choices: armeabi-v7a, arm64-v8a, x86, x86_64
-android.archs = xarm64-v8a
-# android.archs = x86_64 # Used for docker-android
+# android.archs = arm64-v8a
+android.archs = x86_64 
+# x86_64 is used for docker-android
 
 # (list) Android additionnal libraries to copy into libs/armeabi
 android.add_src = %(source.dir)s/java_src/*

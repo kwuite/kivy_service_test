@@ -5,9 +5,11 @@ import os
 
 from time import sleep
 from kivy.utils import platform
+from kivy.logger import Logger
 
 from jnius import cast
 from jnius import autoclass
+
 
 # Подключение классов Android
 if platform == 'android':
@@ -23,20 +25,22 @@ if platform == 'android':
     Intent = autoclass('android.content.Intent')
 
     def application_start():
+        Logger.info(f'ServiceTest: Starting application')
         pm = CurrentActivityService.getPackageManager()
         ix = pm.getLaunchIntentForPackage(CurrentActivityService.getPackageName())
         ix.setAction(Intent.ACTION_VIEW)
         ix.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
 
         CurrentActivityService.startActivity(ix)
+        Logger.info(f'ServiceTest: Application started')
 
     while True:
-        print("python service running.....", CurrentActivityService.getPackageName(), os.getpid())
-        sleep(10)
+        Logger.info(f'ServiceTest: python service running... | {CurrentActivityService.getPackageName()} | {os.getpid()}')
+        sleep(6)
 else:
     def application_start():
         pass
 
     while True:
-        print("python service running.....", os.getpid())
-        sleep(10)
+        Logger.info(f'ServiceTest: python service running... | {os.getpid()}')
+        sleep(6)
